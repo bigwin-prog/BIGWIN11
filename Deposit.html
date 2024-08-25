@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Channel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            width: 420px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #ff7a00;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .header .back-btn, .header .history-btn {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .header .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .balance-section {
+            background-color: #ff7a00;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 20px;
+        }
+
+        .balance-section .balance-amount {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .balance-section .balance-info {
+            font-size: 16px;
+        }
+
+        .select-channel-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .select-channel-title img {
+            margin-right: 15px;
+        }
+
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .channel {
+            width: 48%;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .channel.active {
+            background-color: #ff7a00;
+            color: #fff;
+        }
+
+        .channel:hover {
+            background-color: #ddd;
+        }
+
+        .channel span {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .instructions-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .instructions-title img {
+            margin-right: 15px;
+        }
+
+        .instructions ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .instructions li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .instructions li:before {
+            content: '◆';
+            color: #ff7a00;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function setActiveChannel(element, url) {
+            // Remove 'active' class from all channels
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => channel.classList.remove('active'));
+
+            // Add 'active' class to the clicked channel
+            element.classList.add('active');
+
+            // Redirect to the specified URL after a short delay (optional)
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300); // Adjust the delay as needed
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back-btn">←</div>
+            <div class="title">Deposit</div>
+            <div class="history-btn">Deposit history</div>
+        </div>
+
+        <div class="balance-section">
+            <div class="balance-amount">₹0.00</div>
+            <div class="balance-info">Balance</div>
+        </div>
+
+        <div class="select-channel-title">
+            <img src="banner/th.jfif" width="24" alt="Select channel">
+            Select channel
+        </div>
+        <div class="channel-list">
+            <div class="channel active" onclick="setActiveChannel(this, 'payment.html')">
+                MahaPayINR<br><span >Balance: 200-50k</span>
+                <span>Bonus 30%</span>
+            </div>
+            <div class="channel" onclick="setActiveChannel(this, 'tbPayQR.html')">
+                TBPay x QR<br><span>Balance: 500 - 50K</span>
+                <span>Bonus 30%</span>
+            </div>
+            <div class="channel" onclick="setActiveChannel(this, 'ePayINR.html')">
+                EPayINR<br><span>Balance: 1000 - 100K</span>
+                <span>Bonus 30%</span>
+            </div>
+            <div class="channel" onclick="setActiveChannel(this, 'greenPayINR.html')">
+                GreenPayINR<br><span>Balance: 2000- 50K</span>
+                <span>Bonus 30%</span>
+            </div>
+            
+        </div>
+
+        <div class="instructions">
+            <div class="instructions-title">
+                <img src="banner/123.jfif" width="24" alt="Recharge instructions">
+                Recharge instructions
+            </div>
+            <ul>
+                <li>If the transfer time is up, please fill out the deposit form again.</li>
+                <li>The transfer amount must match the order you created, otherwise the money cannot be credited successfully.</li>
+                <li>If you transfer the wrong amount, our company will not be responsible for the lost amount!</li>
+                <li>Note: do not cancel the deposit order after the money has been transferred.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
